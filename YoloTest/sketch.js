@@ -35,28 +35,28 @@ function gotResult(err, results) {
         console.log(err);
     }
     if (results.length == 0) {
-        console.log("ik zie geen kut")
+        console.log("ik zie niks")
     }
     for (let i = 0; i < results.length; i += 1) {
         console.log(results[i].label)
-        noStroke();
-        fill(0, 255, 0);
-        text(
-            `${results[i].label} ${nfc(results[i].confidence * 100.0, 2)}%`,
-            results[i].x + 5,
-            results[i].y + 15,
-        );
-        noFill();
-        strokeWeight(4);
-        stroke(0, 255, 0);
-        rect(results[i].x, results[i].y, results[i].width, results[i].height);
+        // noStroke();
+        // fill(0, 255, 0);
+        // text(
+        //     `${results[i].label} ${nfc(results[i].confidence * 100.0, 2)}%`,
+        //     results[i].x + 5,
+        //     results[i].y + 15,
+        // );
+        // noFill();
+        // strokeWeight(4);
+        // stroke(0, 255, 0);
+        // rect(results[i].x, results[i].y, results[i].width, results[i].height);
     }
 }
 
 (function () {
 
-    var width = 320; // We will scale the photo width to this
-    var height = 0; // This will be computed based on the input stream
+    // var width = "100%"; // We will scale the photo width to this
+    // var height = 0; // This will be computed based on the input stream
 
     var streaming = false;
 
@@ -85,16 +85,16 @@ function gotResult(err, results) {
 
         video.addEventListener('canplay', function (ev) {
             if (!streaming) {
-                height = video.videoHeight / (video.videoWidth / width);
+                // // height = video.videoHeight / (video.videoWidth / width);
 
-                if (isNaN(height)) {
-                    height = width / (4 / 3);
-                }
+                // // if (isNaN(height)) {
+                // //     height = width / (4 / 3);
+                // // }
 
-                video.setAttribute('width', width);
-                video.setAttribute('height', height);
-                canvas.setAttribute('width', width);
-                canvas.setAttribute('height', height);
+                // video.setAttribute('width', "100%");
+                // // // video.setAttribute('height', height);
+                // // canvas.setAttribute('width', width);
+                // // canvas.setAttribute('height', height);
                 streaming = true;
             }
         }, false);
@@ -127,6 +127,7 @@ function gotResult(err, results) {
             var data = canvas.toDataURL('image/png');
             photo.setAttribute('src', data);
             test(data);
+            clearphoto();
         } else {
             clearphoto();
         }
