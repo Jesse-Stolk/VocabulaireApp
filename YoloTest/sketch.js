@@ -77,6 +77,10 @@ function updateText(result) {
         startbutton = document.getElementById('startbutton');
 
         navigator.mediaDevices.getUserMedia({
+            video:
+            {
+                facingMode: 'environment'
+            },
             video: true,
             audio: false
         })
@@ -90,16 +94,6 @@ function updateText(result) {
 
         video.addEventListener('canplay', function (ev) {
             if (!streaming) {
-                // // height = video.videoHeight / (video.videoWidth / width);
-
-                // // if (isNaN(height)) {
-                // //     height = width / (4 / 3);
-                // // }
-
-                // video.setAttribute('width', "100%");
-                // // // video.setAttribute('height', height);
-                // // canvas.setAttribute('width', width);
-                // // canvas.setAttribute('height', height);
                 streaming = true;
             }
         }, false);
