@@ -11,6 +11,7 @@ This example uses a callback pattern to create the classifier
 
 let objectDetector;
 let img;
+let 
 
 function preload() {
     img = loadImage('images/dawd.jpg');
