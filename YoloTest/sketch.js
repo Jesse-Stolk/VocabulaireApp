@@ -79,8 +79,7 @@ function updateText(result) {
         navigator.mediaDevices.getUserMedia({
             video:
             {
-                video: true,
-                facingMode: { exact: "enviroment"}
+                video: true
             },
             audio: false
         })
