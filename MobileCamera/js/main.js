@@ -1,10 +1,10 @@
-let takeSnapshotUI = createClickFeedbackUI();
+var takeSnapshotUI = createClickFeedbackUI();
 
-let video;
-let takePhotoButton;
-let switchCameraButton;
-let amountOfCameras = 0;
-let currentFacingMode = 'environment';
+var video;
+var takePhotoButton;
+var switchCameraButton;
+var amountOfCameras = 0;
+var currentFacingMode = 'environment';
 
 // this function counts the amount of video inputs
 // it replaces DetectRTC that was previously implemented.
@@ -12,7 +12,8 @@ function deviceCount() {
   return new Promise(function (resolve) {
     var videoInCount = 0;
 
-    navigator.mediaDevices.enumerateDevices()
+    navigator.mediaDevices
+      .enumerateDevices()
       .then(function (devices) {
         devices.forEach(function (device) {
           if (device.kind === 'video') {
@@ -45,22 +46,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
         audio: false,
         video: true,
       })
-
       .then(function (stream) {
         stream.getTracks().forEach(function (track) {
           track.stop();
         });
 
-        deviceCount()
-          .then(function (deviceCount) {
-            amountOfCameras = deviceCount;
+        deviceCount().then(function (deviceCount) {
+          amountOfCameras = deviceCount;
 
-            // init the UI and the camera stream
-            initCameraUI();
-            initCameraStream();
-          });
+          // init the UI and the camera stream
+          initCameraUI();
+          initCameraStream();
+        });
       })
-
       .catch(function (error) {
         //https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
         if (error === 'PermissionDeniedError') {
@@ -87,8 +85,8 @@ function initCameraUI() {
   // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role
 
   takePhotoButton.addEventListener('click', function () {
-    takeSnapshotUI(); // visual only
-    takeSnapshot();   // actual function
+    takeSnapshotUI();
+    takeSnapshot();
   });
 
   // Listen for orientation changes to make sure buttons stay at the side of the
@@ -103,8 +101,8 @@ function initCameraUI() {
       if (screen.orientation) angle = screen.orientation.angle;
       else angle = window.orientation;
 
-      let guiControls = document.getElementById('gui_controls').classList;
-      let vidContainer = document.getElementById('vid_container').classList;
+      var guiControls = document.getElementById('gui_controls').classList;
+      var vidContainer = document.getElementById('vid_container').classList;
 
       if (angle == 270 || angle == -90) {
         guiControls.add('left');
@@ -135,9 +133,9 @@ function initCameraStream() {
 
   // we ask for a square resolution, it will cropped on top (landscape)
   // or cropped at the sides (landscape)
-  let size = 1280;
+  var size = 1280;
 
-  let constraints = {
+  var constraints = {
     audio: false,
     video: {
       width: { ideal: size },
@@ -178,10 +176,10 @@ function initCameraStream() {
 
 function takeSnapshot() {
   // if you'd like to show the canvas add it to the DOM
-  let canvas = document.createElement('canvas');
+  var canvas = document.createElement('canvas');
 
-  let width = video.videoWidth;
-  let height = video.videoHeight;
+  var width = video.videoWidth;
+  var height = video.videoHeight;
 
   canvas.width = width;
   canvas.height = height;
@@ -203,9 +201,7 @@ function takeSnapshot() {
 
   // some API's (like Azure Custom Vision) need a blob with image data
   getCanvasBlob(canvas).then(function (blob) {
-    console.log("Test print getCanvasBlob()");
-    console.log(canvas);
-    console.log(blob);
+    // do something with the image blob
   });
 }
 
@@ -217,10 +213,10 @@ function takeSnapshot() {
 function createClickFeedbackUI() {
   // in order to give feedback that we actually pressed a button.
   // we trigger a almost black overlay
-  let overlay = document.getElementById('video_overlay'); //.style.display;
+  var overlay = document.getElementById('video_overlay'); //.style.display;
 
-  let overlayVisibility = false;
-  let timeOut = 80;
+  var overlayVisibility = false;
+  var timeOut = 80;
 
   function setFalseAgain() {
     overlayVisibility = false;
