@@ -23,7 +23,11 @@ a.vb-button-lang{
     background-color: #793AFF;
 } */
 
-/* video{
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-} */
+video{
+    /* -webkit-transform: scaleX(-1);
+    transform: scaleX(-1); */
+}
+
+body{
+    margin: 0px;
+}

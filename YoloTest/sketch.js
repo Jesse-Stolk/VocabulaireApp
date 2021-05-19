@@ -11,7 +11,6 @@ This example uses a callback pattern to create the classifier
 
 let objectDetector;
 let img;
-let 
 
 function preload() {
     img = loadImage('images/dawd.jpg');
@@ -40,6 +39,8 @@ function gotResult(err, results) {
     }
     for (let i = 0; i < results.length; i += 1) {
         console.log(results[i].label)
+        document.getElementById('prediction').innerHTML
+            = 'Prediction:' + results[i].label;
         // noStroke();
         // fill(0, 255, 0);
         // text(
@@ -73,7 +74,7 @@ function gotResult(err, results) {
         startbutton = document.getElementById('startbutton');
 
         navigator.mediaDevices.getUserMedia({
-            video: { facingMode: "user" },
+            video: true,
             audio: false
         })
             .then(function (stream) {
