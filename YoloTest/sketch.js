@@ -76,16 +76,16 @@ function updateText(result) {
         photo = document.getElementById('photo');
         startbutton = document.getElementById('startbutton');
 
+        console.log(navigator.mediaDevices.enumerateDevices);
 
         navigator.mediaDevices.getUserMedia({ 
             video: { 
-              facingMode: { exact: "environment" }
+              facingMode: { exact: "user" }
             } 
-          })
-          .then(function(stream) {
-            video.src = window.URL.createObjectURL(stream);
+        }).then(function(stream) {
+            video.src = stream;
             video.play();
-          });
+        });
 
         video.addEventListener('canplay', function (ev) {
             if (!streaming) {
