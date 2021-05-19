@@ -103,8 +103,8 @@ function initCameraUI() {
       if (screen.orientation) angle = screen.orientation.angle;
       else angle = window.orientation;
 
-      var guiControls = document.getElementById('gui_controls').classList;
-      var vidContainer = document.getElementById('vid_container').classList;
+      let guiControls = document.getElementById('gui_controls').classList;
+      let vidContainer = document.getElementById('vid_container').classList;
 
       if (angle == 270 || angle == -90) {
         guiControls.add('left');
@@ -135,9 +135,9 @@ function initCameraStream() {
 
   // we ask for a square resolution, it will cropped on top (landscape)
   // or cropped at the sides (landscape)
-  var size = 1280;
+  let size = 1280;
 
-  var constraints = {
+  let constraints = {
     audio: false,
     video: {
       width: { ideal: size },
@@ -178,10 +178,10 @@ function initCameraStream() {
 
 function takeSnapshot() {
   // if you'd like to show the canvas add it to the DOM
-  var canvas = document.createElement('canvas');
+  let canvas = document.createElement('canvas');
 
-  var width = video.videoWidth;
-  var height = video.videoHeight;
+  let width = video.videoWidth;
+  let height = video.videoHeight;
 
   canvas.width = width;
   canvas.height = height;
@@ -203,7 +203,9 @@ function takeSnapshot() {
 
   // some API's (like Azure Custom Vision) need a blob with image data
   getCanvasBlob(canvas).then(function (blob) {
-    // do something with the image blob
+    console.log("Test print getCanvasBlob()");
+    console.log(canvas);
+    console.log(blob);
   });
 }
 
