@@ -1,10 +1,10 @@
-var takeSnapshotUI = createClickFeedbackUI();
+let takeSnapshotUI = createClickFeedbackUI();
 
-var video;
-var takePhotoButton;
-var switchCameraButton;
-var amountOfCameras = 0;
-var currentFacingMode = 'environment';
+let video;
+let takePhotoButton;
+let switchCameraButton;
+let amountOfCameras = 0;
+let currentFacingMode = 'environment';
 
 // this function counts the amount of video inputs
 // it replaces DetectRTC that was previously implemented.
@@ -12,8 +12,7 @@ function deviceCount() {
   return new Promise(function (resolve) {
     var videoInCount = 0;
 
-    navigator.mediaDevices
-      .enumerateDevices()
+    navigator.mediaDevices.enumerateDevices()
       .then(function (devices) {
         devices.forEach(function (device) {
           if (device.kind === 'video') {
@@ -37,7 +36,7 @@ function deviceCount() {
 
 document.addEventListener('DOMContentLoaded', function (event) {
   // check if mediaDevices is supported
-  if ( navigator.mediaDevices && navigator.mediaDevices.getUserMedia && navigator.mediaDevices.enumerateDevices) {
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && navigator.mediaDevices.enumerateDevices) {
     // first we call getUserMedia to trigger permissions
     // we need this before deviceCount, otherwise Safari doesn't return all the cameras
     // we need to have the number in order to display the switch front/back button
@@ -46,19 +45,22 @@ document.addEventListener('DOMContentLoaded', function (event) {
         audio: false,
         video: true,
       })
+
       .then(function (stream) {
         stream.getTracks().forEach(function (track) {
           track.stop();
         });
 
-        deviceCount().then(function (deviceCount) {
-          amountOfCameras = deviceCount;
+        deviceCount()
+          .then(function (deviceCount) {
+            amountOfCameras = deviceCount;
 
-          // init the UI and the camera stream
-          initCameraUI();
-          initCameraStream();
-        });
+            // init the UI and the camera stream
+            initCameraUI();
+            initCameraStream();
+          });
       })
+
       .catch(function (error) {
         //https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
         if (error === 'PermissionDeniedError') {
@@ -85,8 +87,8 @@ function initCameraUI() {
   // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role
 
   takePhotoButton.addEventListener('click', function () {
-    takeSnapshotUI();
-    takeSnapshot();
+    takeSnapshotUI(); // visual only
+    takeSnapshot();   // actual function
   });
 
   // Listen for orientation changes to make sure buttons stay at the side of the
@@ -213,10 +215,10 @@ function takeSnapshot() {
 function createClickFeedbackUI() {
   // in order to give feedback that we actually pressed a button.
   // we trigger a almost black overlay
-  var overlay = document.getElementById('video_overlay'); //.style.display;
+  let overlay = document.getElementById('video_overlay'); //.style.display;
 
-  var overlayVisibility = false;
-  var timeOut = 80;
+  let overlayVisibility = false;
+  let timeOut = 80;
 
   function setFalseAgain() {
     overlayVisibility = false;
