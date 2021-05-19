@@ -22,3 +22,8 @@ a.vb-button-lang{
     top: 15px;
     background-color: #793AFF;
 } */
+
+video{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}

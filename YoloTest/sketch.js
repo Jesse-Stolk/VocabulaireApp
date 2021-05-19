@@ -72,7 +72,7 @@ function gotResult(err, results) {
         startbutton = document.getElementById('startbutton');
 
         navigator.mediaDevices.getUserMedia({
-            video: true,
+            video: { facingMode: "user" },
             audio: false
         })
             .then(function (stream) {
