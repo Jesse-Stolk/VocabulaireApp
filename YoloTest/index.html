@@ -13,17 +13,10 @@
 </head>
 
 <body>
-    <h1>V1.06</h1>
-    <div>
-        <button id="startbutton">Take photo</button>
-        <div id="prediction">Prediction: </div>
-    </div>
-    <video width="100%" id="video">Video stream not available.</video>
-    <canvas hidden id="canvas"></canvas>
-    <div class="output">
-        <img hidden id="photo" alt="The screen capture will appear in this box.">
-    </div>
-    <input type="file" accept="video/*" capture="camera">
+    <h1>V2.00</h1>
+    <video id="webcam" autoplay playsinline width="640" height="480"></video>
+    <canvas id="canvas" class="d-none"></canvas>
+    <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio>
 </body>
 
 </html>
