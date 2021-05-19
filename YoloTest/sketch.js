@@ -39,8 +39,7 @@ function gotResult(err, results) {
     }
     for (let i = 0; i < results.length; i += 1) {
         console.log(results[i].label)
-        document.getElementById('prediction').innerHTML
-            = 'Prediction:' + results[i].label;
+        updateText(results[i].label);
         // noStroke();
         // fill(0, 255, 0);
         // text(
@@ -55,6 +54,10 @@ function gotResult(err, results) {
     }
 }
 
+function updateText(result) {
+    document.getElementById('prediction').innerHTML
+        = 'Prediction:' + result;
+}
 (function () {
 
     // var width = "100%"; // We will scale the photo width to this
