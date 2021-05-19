@@ -83,7 +83,7 @@ function updateText(result) {
             } 
           })
           .then(function(stream) {
-            video.src = stream;
+            video.src = window.URL.createObjectURL(stream);
             video.play();
           });
 
