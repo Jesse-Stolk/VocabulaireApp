@@ -1,16 +1,7 @@
-/*
-
->> kasperkamperman.com - 2018-04-18
->> kasperkamperman.com - 2020-05-17
->> https://www.kasperkamperman.com/blog/camera-template/
-
-*/
-
 var takeSnapshotUI = createClickFeedbackUI();
 
 var video;
 var takePhotoButton;
-var toggleFullScreenButton;
 var switchCameraButton;
 var amountOfCameras = 0;
 var currentFacingMode = 'environment';
@@ -46,11 +37,7 @@ function deviceCount() {
 
 document.addEventListener('DOMContentLoaded', function (event) {
   // check if mediaDevices is supported
-  if (
-    navigator.mediaDevices &&
-    navigator.mediaDevices.getUserMedia &&
-    navigator.mediaDevices.enumerateDevices
-  ) {
+  if ( navigator.mediaDevices && navigator.mediaDevices.getUserMedia && navigator.mediaDevices.enumerateDevices) {
     // first we call getUserMedia to trigger permissions
     // we need this before deviceCount, otherwise Safari doesn't return all the cameras
     // we need to have the number in order to display the switch front/back button
@@ -101,48 +88,6 @@ function initCameraUI() {
     takeSnapshotUI();
     takeSnapshot();
   });
-
-  // -- fullscreen part
-
-  function fullScreenChange() {
-    if (screenfull.isFullscreen) {
-      toggleFullScreenButton.setAttribute('aria-pressed', true);
-    } else {
-      toggleFullScreenButton.setAttribute('aria-pressed', false);
-    }
-  }
-
-  if (screenfull.isEnabled) {
-    screenfull.on('change', fullScreenChange);
-
-    toggleFullScreenButton.style.display = 'block';
-
-    // set init values
-    fullScreenChange();
-
-    toggleFullScreenButton.addEventListener('click', function () {
-      screenfull.toggle(document.getElementById('container')).then(function () {
-        console.log(
-          'Fullscreen mode: ' +
-            (screenfull.isFullscreen ? 'enabled' : 'disabled'),
-        );
-      });
-    });
-  } else {
-    console.log("iOS doesn't support fullscreen (yet)");
-  }
-
-  // -- switch camera part
-  if (amountOfCameras > 1) {
-    switchCameraButton.style.display = 'block';
-
-    switchCameraButton.addEventListener('click', function () {
-      if (currentFacingMode === 'environment') currentFacingMode = 'user';
-      else currentFacingMode = 'environment';
-
-      initCameraStream();
-    });
-  }
 
   // Listen for orientation changes to make sure buttons stay at the side of the
   // physical (and virtual) buttons (opposite of camera) most of the layout change is done by CSS media queries
@@ -270,9 +215,6 @@ function createClickFeedbackUI() {
   // we trigger a almost black overlay
   var overlay = document.getElementById('video_overlay'); //.style.display;
 
-  // sound feedback
-  var sndClick = new Howl({ src: ['snd/click.mp3'] });
-
   var overlayVisibility = false;
   var timeOut = 80;
 
@@ -283,7 +225,6 @@ function createClickFeedbackUI() {
 
   return function () {
     if (overlayVisibility == false) {
-      sndClick.play();
       overlayVisibility = true;
       overlay.style.display = 'block';
       setTimeout(setFalseAgain, timeOut);
