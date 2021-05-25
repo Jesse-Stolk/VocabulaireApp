@@ -25,7 +25,7 @@ function gotResult(err, results) {
   if (err) {
     console.log(err);
   }
-  if (results.length == 0) {
+  if (results.length >= 0) {
     console.log("ik zie niks")
   }
   for (let i = 0; i < results.length; i += 1) {
