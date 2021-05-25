@@ -1,4 +1,4 @@
-const versionNumber = "V2.16"
+const versionNumber = "V2.15"
 
 var video;
 var takePhotoButton;
@@ -224,9 +224,7 @@ function takeSnapshot() {
 
   context = canvas.getContext('2d');
   context.drawImage(video, 0, 0, width, height);
-  var data = canvas.toBlob(function (blob) {
-    resolve(blob);
-  }, 'image/jpeg');
+  var data = canvas.toDataURL('image/jpeg', 0.7);
   // photo.setAttribute('src', data);
   inputImage(data);
 
@@ -242,7 +240,7 @@ function takeSnapshot() {
     });
   }
 
-  // some API's (like Azure Custom Vision) need a blob with image data
+  // // some API's (like Azure Custom Vision) need a blob with image data
   // getCanvasBlob(canvas).then(function (blob) {
   //   // do something with the image blob
   // });
