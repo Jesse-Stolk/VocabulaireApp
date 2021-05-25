@@ -1,4 +1,4 @@
-const versionNumber = "V2.06"
+const versionNumber = "V2.05"
 
 var video;
 var takePhotoButton;
@@ -24,9 +24,8 @@ function inputImage(dataImg) {
 function gotResult(err, results) {
   if (err) {
     console.log(err);
-    console.log(results)
   }
-  if (results.length == 0) {
+  if (results.length <= 0) {
     console.log("ik zie niks")
   }
   for (let i = 0; i < results.length; i += 1) {
@@ -216,13 +215,9 @@ function takeSnapshot() {
   canvas.height = height;
 
   context = canvas.getContext('2d');
-  console.log("1", context);
   context.drawImage(video, 0, 0, width, height);
-  console.log("2, getekend");
   var data = canvas.toDataURL('image/png');
-  console.log("3", data);
   photo.setAttribute('src', data);
-  console.log("4", photo);
   inputImage(data);
 
   // polyfil if needed https://github.com/blueimp/JavaScript-Canvas-to-Blob
