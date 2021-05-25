@@ -3,6 +3,7 @@ var takePhotoButton;
 var switchCameraButton;
 var amountOfCameras = 0;
 var currentFacingMode = 'environment';
+var photo = null;
 
 let objectDetector;
 
