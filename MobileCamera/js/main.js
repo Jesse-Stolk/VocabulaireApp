@@ -13,6 +13,7 @@ var objectDetector;
 //   objectDetector = ml5.objectDetector('cocossd');
 //   console.log(objectDetector);
 // }
+
 console.log(`VERSIENUMMER: ${versionNumber}`)
 
 function inputImage(dataImg) {
