@@ -6,6 +6,13 @@ var switchCameraButton;
 var amountOfCameras = 0;
 var currentFacingMode = 'environment';
 
+let objectDetector;
+
+function preload() {
+  // Models available are 'cocossd', 'yolo'
+  objectDetector = ml5.objectDetector('cocossd');
+}
+
 // this function counts the amount of video inputs
 // it replaces DetectRTC that was previously implemented.
 function deviceCount() {
@@ -37,7 +44,7 @@ function deviceCount() {
 
 document.addEventListener('DOMContentLoaded', function (event) {
   // check if mediaDevices is supported
-  if ( navigator.mediaDevices && navigator.mediaDevices.getUserMedia && navigator.mediaDevices.enumerateDevices) {
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && navigator.mediaDevices.enumerateDevices) {
     // first we call getUserMedia to trigger permissions
     // we need this before deviceCount, otherwise Safari doesn't return all the cameras
     // we need to have the number in order to display the switch front/back button
