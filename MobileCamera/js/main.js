@@ -1,4 +1,4 @@
-const versionNumber = "V2.04"
+const versionNumber = "V2.06"
 
 var video;
 var takePhotoButton;
@@ -24,6 +24,7 @@ function inputImage(dataImg) {
 function gotResult(err, results) {
   if (err) {
     console.log(err);
+    console.log(results)
   }
   if (results.length == 0) {
     console.log("ik zie niks")
