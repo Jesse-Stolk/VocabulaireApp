@@ -1,5 +1,3 @@
-var takeSnapshotUI = createClickFeedbackUI();
-
 var video;
 var takePhotoButton;
 var switchCameraButton;
@@ -111,7 +109,6 @@ function initCameraUI() {
   // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role
 
   takePhotoButton.addEventListener('click', function () {
-    takeSnapshotUI();
     takeSnapshot();
   });
 
@@ -233,31 +230,4 @@ function takeSnapshot() {
   getCanvasBlob(canvas).then(function (blob) {
     // do something with the image blob
   });
-}
-
-// https://hackernoon.com/how-to-use-javascript-closures-with-confidence-85cd1f841a6b
-// closure; store this in a variable and call the variable as function
-// eg. var takeSnapshotUI = createClickFeedbackUI();
-// takeSnapshotUI();
-
-function createClickFeedbackUI() {
-  // in order to give feedback that we actually pressed a button.
-  // we trigger a almost black overlay
-  var overlay = document.getElementById('video_overlay'); //.style.display;
-
-  var overlayVisibility = false;
-  var timeOut = 80;
-
-  function setFalseAgain() {
-    overlayVisibility = false;
-    overlay.style.display = 'none';
-  }
-
-  return function () {
-    if (overlayVisibility == false) {
-      overlayVisibility = true;
-      overlay.style.display = 'block';
-      setTimeout(setFalseAgain, timeOut);
-    }
-  };
 }
