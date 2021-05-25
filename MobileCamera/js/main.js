@@ -21,14 +21,14 @@ function inputImage(dataImg) {
 // A function to run when we get any errors and the results
 function gotResult(err, results) {
   if (err) {
-      console.log(err);
+    console.log(err);
   }
   if (results.length == 0) {
-      console.log("ik zie niks")
+    console.log("ik zie niks")
   }
   for (let i = 0; i < results.length; i += 1) {
     // do iets met results
-      console.log(results[i].label)
+    console.log(results[i].label)
   }
 }
 
@@ -212,6 +212,10 @@ function takeSnapshot() {
 
   context = canvas.getContext('2d');
   context.drawImage(video, 0, 0, width, height);
+
+  var data = canvas.toDataURL('image/png');
+  photo.setAttribute('src', data);
+  inputImage(data);
 
   // polyfil if needed https://github.com/blueimp/JavaScript-Canvas-to-Blob
 
