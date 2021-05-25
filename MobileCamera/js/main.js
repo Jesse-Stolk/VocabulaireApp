@@ -7,7 +7,8 @@ var amountOfCameras = 0;
 var currentFacingMode = 'environment';
 var photo = null;
 var objectDetector;
-
+var results;
+var err;
 // function preload() {
 //   // Models available are 'cocossd', 'yolo'
 //   objectDetector = ml5.objectDetector('cocossd');
