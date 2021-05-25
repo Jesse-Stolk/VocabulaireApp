@@ -1,4 +1,4 @@
-const versionNumber = "V2.10"
+const versionNumber = "V2.11"
 
 var video;
 var takePhotoButton;
@@ -26,11 +26,11 @@ function gotResult(err, results) {
   if (err) {
     console.log(err);
   }
-  if (results.length <= 0) {
+  else if (results.length <= 0) {
     console.log("ik zie niks")
     updateText("ik zie niks");
   }
-  for (let i = 0; i < results.length; i += 1) {
+  else (let i = 0; i < results.length; i += 1) {
     // do iets met results
     console.log(results[i].label);
     updateText(results[i].label);
