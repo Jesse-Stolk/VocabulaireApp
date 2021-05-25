@@ -1,4 +1,4 @@
-const versionNumber = "V2.09"
+const versionNumber = "V2.10"
 
 var video;
 var takePhotoButton;
@@ -7,8 +7,7 @@ var amountOfCameras = 0;
 var currentFacingMode = 'environment';
 var photo = null;
 var objectDetector;
-var results;
-var err;
+
 // function preload() {
 //   // Models available are 'cocossd', 'yolo'
 //   objectDetector = ml5.objectDetector('cocossd');
@@ -19,6 +18,7 @@ console.log(`VERSIENUMMER: ${versionNumber}`)
 function inputImage(dataImg) {
   var mainImg = new Image();
   mainImg.src = dataImg;
+  console.log(mainImg);
   objectDetector.detect(mainImg, gotResult);
 }
 // A function to run when we get any errors and the results
