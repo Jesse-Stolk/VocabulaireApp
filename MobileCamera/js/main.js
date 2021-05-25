@@ -47,6 +47,7 @@ function updateText(result) {
 // it replaces DetectRTC that was previously implemented.
 function deviceCount() {
   objectDetector = ml5.objectDetector('cocossd');
+  updateText(versionNumber);
   return new Promise(function (resolve) {
     var videoInCount = 0;
 
