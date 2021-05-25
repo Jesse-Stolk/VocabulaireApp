@@ -1,4 +1,4 @@
-const versionNumber = "V2.14"
+const versionNumber = "V2.15"
 
 var video;
 var takePhotoButton;
@@ -224,7 +224,7 @@ function takeSnapshot() {
 
   context = canvas.getContext('2d');
   context.drawImage(video, 0, 0, width, height);
-  var data = canvas.toDataURL('image/png');
+  var data = canvas.toDataURL('image/jpeg', 0.7);
   photo.setAttribute('src', data);
   inputImage(data);
 
