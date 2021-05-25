@@ -13,6 +13,25 @@ function preload() {
   objectDetector = ml5.objectDetector('cocossd');
 }
 
+function inputImage(dataImg) {
+  var mainImg = new Image();
+  mainImg.src = dataImg;
+  objectDetector.detect(mainImg, gotResult);
+}
+// A function to run when we get any errors and the results
+function gotResult(err, results) {
+  if (err) {
+      console.log(err);
+  }
+  if (results.length == 0) {
+      console.log("ik zie niks")
+  }
+  for (let i = 0; i < results.length; i += 1) {
+    // do iets met results
+      console.log(results[i].label)
+  }
+}
+
 // this function counts the amount of video inputs
 // it replaces DetectRTC that was previously implemented.
 function deviceCount() {
