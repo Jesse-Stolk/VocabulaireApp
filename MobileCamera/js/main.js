@@ -4,13 +4,13 @@ var switchCameraButton;
 var amountOfCameras = 0;
 var currentFacingMode = 'environment';
 var photo = null;
+var objectDetector;
 
-let objectDetector;
-
-function preload() {
-  // Models available are 'cocossd', 'yolo'
-  objectDetector = ml5.objectDetector('cocossd');
-}
+// function preload() {
+//   // Models available are 'cocossd', 'yolo'
+//   objectDetector = ml5.objectDetector('cocossd');
+//   console.log(objectDetector);
+// }
 
 function inputImage(dataImg) {
   var mainImg = new Image();
@@ -34,6 +34,8 @@ function gotResult(err, results) {
 // this function counts the amount of video inputs
 // it replaces DetectRTC that was previously implemented.
 function deviceCount() {
+   objectDetector = ml5.objectDetector('cocossd');
+  console.log(objectDetector);
   return new Promise(function (resolve) {
     var videoInCount = 0;
 
