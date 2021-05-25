@@ -1,4 +1,4 @@
-const versionNumber = "V2.16"
+const versionNumber = "V2.17"
 
 var video;
 var takePhotoButton;
@@ -175,8 +175,10 @@ function initCameraStream() {
   var constraints = {
     audio: false,
     video: {
-      width: { ideal: size },
-      height: { ideal: size },
+      // width: { ideal: size },
+      // height: { ideal: size },
+      width: 500,
+      height: 500,
       //width: { min: 1024, ideal: window.innerWidth, max: 1920 },
       //height: { min: 776, ideal: window.innerHeight, max: 1080 },
       facingMode: currentFacingMode,
