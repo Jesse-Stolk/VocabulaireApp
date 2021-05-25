@@ -1,3 +1,5 @@
+const versionNumber = "V2.04"
+
 var video;
 var takePhotoButton;
 var switchCameraButton;
@@ -11,6 +13,7 @@ var objectDetector;
 //   objectDetector = ml5.objectDetector('cocossd');
 //   console.log(objectDetector);
 // }
+console.log(`VERSIENUMMER: ${versionNumber}`)
 
 function inputImage(dataImg) {
   var mainImg = new Image();
@@ -34,7 +37,7 @@ function gotResult(err, results) {
 // this function counts the amount of video inputs
 // it replaces DetectRTC that was previously implemented.
 function deviceCount() {
-   objectDetector = ml5.objectDetector('cocossd');
+  objectDetector = ml5.objectDetector('cocossd');
   console.log(objectDetector);
   return new Promise(function (resolve) {
     var videoInCount = 0;
