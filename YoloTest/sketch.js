@@ -55,7 +55,7 @@ function gotResult(err, results) {
 }
 
 function updateText(result) {
-    document.getElementById('prediction').innerHTML
+    document.getElementById('testInfo').innerHTML
         = 'Prediction:' + result;
 }
 (function () {
