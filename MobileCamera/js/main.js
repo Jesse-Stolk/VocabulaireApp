@@ -10,7 +10,7 @@ var objectDetector;
 
 console.log(`VERSIENUMMER: ${versionNumber}`)
 
-import translate from '@vitalets/google-translate-api';
+const translate = require('@vitalets/google-translate-api');
 
 translate('Ik spreek Engels', { to: 'en' }).then(res => {
   console.log(res.text);
