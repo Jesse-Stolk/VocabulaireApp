@@ -22,20 +22,21 @@ function inputImage(dataImg) {
   console.log(mainImg);
   objectDetector.detect(mainImg, gotResult);
 }
+
 // A function to run when we get any errors and the results
 function gotResult(err, results) {
   if (err) {
     console.log(err);
-  }
-  else if (results.length <= 0) {
+  } else if (results.length <= 0) {
     console.log("ik zie niks")
     updateText("ik zie niks");
-  }
-  else for (let i = 0; i < results.length; i += 1) {
-    // do iets met results
-    console.log(results[i].label);
-    updateText(results[i].label);
-  }
+  } else
+    for (let i = 0; i < results.length; i += 1) {
+      // do iets met results
+      console.log(results[i]);
+      console.log(results[i].label);
+      updateText(results[i].label);
+    }
 }
 
 function updateText(result) {
