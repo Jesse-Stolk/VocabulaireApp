@@ -46,7 +46,7 @@ function updateText(result) {
 // this function counts the amount of video inputs
 // it replaces DetectRTC that was previously implemented.
 function deviceCount() {
-  objectDetector = ml5.objectDetector('cocossd');
+  objectDetector = ml5.objectDetector('yolo');
   updateText(versionNumber);
   return new Promise(function (resolve) {
     var videoInCount = 0;
