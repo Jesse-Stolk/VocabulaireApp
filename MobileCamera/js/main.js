@@ -1,4 +1,4 @@
-const versionNumber = "V3.0.03"
+const versionNumber = "V3.0.04"
 
 var video;
 var takePhotoButton;
@@ -7,6 +7,8 @@ var amountOfCameras = 0;
 var currentFacingMode = 'environment';
 var photo = null;
 var objectDetector;
+
+console.log(`VERSIENUMMER: ${versionNumber}`)
 
 import translate from '@vitalets/google-translate-api';
 
@@ -24,8 +26,6 @@ translate('Ik spreek Engels', { to: 'en' }).then(res => {
 //   objectDetector = ml5.objectDetector('cocossd');
 //   console.log(objectDetector);
 // }
-
-console.log(`VERSIENUMMER: ${versionNumber}`)
 
 function inputImage(dataImg) {
   var mainImg = new Image();
