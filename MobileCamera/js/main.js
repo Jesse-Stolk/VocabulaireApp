@@ -1,4 +1,4 @@
-const versionNumber = "V2.19"
+const versionNumber = "V3.00"
 
 var video;
 var takePhotoButton;
@@ -7,6 +7,17 @@ var amountOfCameras = 0;
 var currentFacingMode = 'environment';
 var photo = null;
 var objectDetector;
+
+const translate = require('@vitalets/google-translate-api');
+
+translate('Ik spreek Engels', { to: 'en' }).then(res => {
+  console.log(res.text);
+  //=> I speak English
+  console.log(res.from.language.iso);
+  //=> nl
+}).catch(err => {
+  console.error(err);
+});
 
 // function preload() {
 //   // Models available are 'cocossd', 'yolo'
