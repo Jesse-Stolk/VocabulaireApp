@@ -41,7 +41,7 @@ function gotResult(err, results) {
 
 function updateText(result) {
   document.getElementById('testInfo').innerHTML
-    = 'Prediction:' + result;
+    = 'Prediction: ' + result;
 }
 
 // this function counts the amount of video inputs
