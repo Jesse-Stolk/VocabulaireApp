@@ -1,4 +1,4 @@
-const versionNumber = "V3.0.05"
+const versionNumber = "V3.0.06"
 
 var video;
 var takePhotoButton;
