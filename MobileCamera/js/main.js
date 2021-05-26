@@ -1,4 +1,4 @@
-const versionNumber = "V3.00"
+const versionNumber = "V3.0.01"
 
 var video;
 var takePhotoButton;
@@ -8,7 +8,8 @@ var currentFacingMode = 'environment';
 var photo = null;
 var objectDetector;
 
-const translate = require('@vitalets/google-translate-api');
+import translate from '@vitalets/google-translate-api';
+
 
 translate('Ik spreek Engels', { to: 'en' }).then(res => {
   console.log(res.text);
