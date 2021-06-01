@@ -1,4 +1,4 @@
-const versionNumber = "V3.0.06"
+const versionNumber = "V3.0.07"
 
 var video;
 var takePhotoButton;
@@ -10,13 +10,6 @@ var objectDetector;
 
 console.log(`VERSIENUMMER: ${versionNumber}`)
 
-const translate = require('@vitalets/google-translate-api');
-
-translate('Ik spreek Engels', { to: 'en' })
-  .then(res => {
-    console.log(res.text); //=> I speak English
-    console.log(res.from.language.iso); //=> nl
-  });
 
 // function preload() {
 //   // Models available are 'cocossd', 'yolo'
