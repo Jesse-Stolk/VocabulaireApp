@@ -1,4 +1,4 @@
-const versionNumber = "V3.0.07"
+const versionNumber = "V3.1.0"
 
 var video;
 var takePhotoButton;
@@ -10,6 +10,57 @@ var objectDetector;
 
 console.log(`VERSIENUMMER: ${versionNumber}`)
 
+// BEGIN COPY
+
+function doGet(e) {
+
+  var sourceText = ''
+  if (e.parameter.q) {
+    sourceText = e.parameter.q;
+  }
+
+  var sourceLang = 'auto';
+  if (e.parameter.source) {
+    sourceLang = e.parameter.source;
+  }
+
+  var targetLang = 'ja';
+  if (e.parameter.target) {
+    targetLang = e.parameter.target;
+  }
+
+  /* Option 2 */
+
+  var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="
+    + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText);
+
+  var result = JSON.parse(UrlFetchApp.fetch(url).getContentText());
+
+  translatedText = result[0][0][0];
+
+  var json = {
+    'sourceText': sourceText,
+    'translatedText': translatedText
+  };
+
+  // set JSONP callback
+  var callback = 'callback';
+  if (e.parameter.callback) {
+    callback = e.parameter.callback
+  }
+
+  console.log(JSON.stringify(json))
+  console.log(callback)
+  // console.log(ContentService.createTextOutput(callback + '(' + JSON.stringify(json) + ')'))
+
+  // return JSONP
+  return ContentService
+    .createTextOutput(callback + '(' + JSON.stringify(json) + ')')
+    .setMimeType(ContentService.MimeType.JAVASCRIPT);
+
+}
+
+// END COPY
 
 // function preload() {
 //   // Models available are 'cocossd', 'yolo'
@@ -232,6 +283,8 @@ function takeSnapshot() {
   var data = canvas.toDataURL('image/jpeg', 0.7);
   // photo.setAttribute('src', data);
   inputImage(data);
+
+  doGet("Je moeder")
 
   // polyfil if needed https://github.com/blueimp/JavaScript-Canvas-to-Blob
 
