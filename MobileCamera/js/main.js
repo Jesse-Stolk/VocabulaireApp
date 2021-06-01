@@ -1,4 +1,4 @@
-const versionNumber = "V3.1.2"
+const versionNumber = "V3.1.3"
 
 var video;
 var takePhotoButton;
@@ -32,7 +32,7 @@ function doGet(sourceLang, targetLang, sourceText) {
   var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="
     + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText);
 
-  var result = JSON.parse(fetch(url).getContentText());
+  var result = JSON.parse(fetch(url));
 
   translatedText = result[0][0][0];
 
