@@ -1,4 +1,4 @@
-const versionNumber = "V3.1.0"
+const versionNumber = "V3.1.1"
 
 var video;
 var takePhotoButton;
@@ -12,24 +12,22 @@ console.log(`VERSIENUMMER: ${versionNumber}`)
 
 // BEGIN COPY
 
-function doGet(e) {
+function doGet(sourceLang, targetLang, sourceText) {
 
-  var sourceText = ''
-  if (e.parameter.q) {
-    sourceText = e.parameter.q;
-  }
+  // var sourceText = ''
+  // if (e.parameter.q) {
+  //   sourceText = e.parameter.q;
+  // }
 
-  var sourceLang = 'auto';
-  if (e.parameter.source) {
-    sourceLang = e.parameter.source;
-  }
+  // var sourceLang = 'auto';
+  // if (e.parameter.source) {
+  //   sourceLang = e.parameter.source;
+  // }
 
-  var targetLang = 'ja';
-  if (e.parameter.target) {
-    targetLang = e.parameter.target;
-  }
-
-  /* Option 2 */
+  // var targetLang = 'ja';
+  // if (e.parameter.target) {
+  //   targetLang = e.parameter.target;
+  // }
 
   var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="
     + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText);
@@ -44,10 +42,10 @@ function doGet(e) {
   };
 
   // set JSONP callback
-  var callback = 'callback';
-  if (e.parameter.callback) {
-    callback = e.parameter.callback
-  }
+  // var callback = 'callback';
+  // if (e.parameter.callback) {
+  //   callback = e.parameter.callback
+  // }
 
   console.log(JSON.stringify(json))
   console.log(callback)
@@ -284,7 +282,7 @@ function takeSnapshot() {
   // photo.setAttribute('src', data);
   inputImage(data);
 
-  doGet("Je moeder")
+  doGet("auto", "ja", "Je moeder")
 
   // polyfil if needed https://github.com/blueimp/JavaScript-Canvas-to-Blob
 
